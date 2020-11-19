@@ -6,11 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import com.master.salmonapp.entity.Team;
-import com.master.salmonapp.model.TeamModel;
-import com.master.salmonapp.model.TeamRequestModel;
-import com.master.salmonapp.repository.TeamRepository;
-import com.master.salmonapp.service.TeamService;
+import com.master.salmonapp.entity.MasterMobil;
+import com.master.salmonapp.model.MasterMobilModel;
+import com.master.salmonapp.model.MasterMobilRequestModel;
+import com.master.salmonapp.repository.MasterMobilRepo;
+import com.master.salmonapp.service.MasterMobilService;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,79 +30,76 @@ import io.swagger.annotations.Api;
 
 @Api
 @RestController
-@RequestMapping("/api/rest/team")
-public class TeamRestController {
-    
-    @Autowired
-    private TeamService teamService;
+@RequestMapping("/api/rest/masterMobil")
+public class MasterMobilRestController {
 
     @Autowired
-    private TeamRepository teamRepository;
+    private MasterMobilService masterMobilService;
 
-	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Autowired
+    private MasterMobilRepo masterMobilRepo;
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/save")
-	public TeamModel save(@RequestBody @Valid TeamRequestModel request,
+	public MasterMobilModel save(@RequestBody @Valid MasterMobilRequestModel request,
 			BindingResult result,
 			HttpServletResponse response) throws IOException {
-		TeamModel teamModel = new TeamModel();
+		MasterMobilModel masterMobilModel = new MasterMobilModel();
 		if (result.hasErrors()) {
 			response.sendError(HttpStatus.BAD_REQUEST.value(), result.getAllErrors().toString());
-			return teamModel;
+			return masterMobilModel;
 		} else {
-			BeanUtils.copyProperties(request, teamModel);
-			return teamService.saveOrUpdate(teamModel);
+			BeanUtils.copyProperties(request, masterMobilModel);
+			return masterMobilService.saveOrUpdate(masterMobilModel);
 		}
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/update")
-    public TeamModel update(@RequestBody @Valid TeamRequestModel request,
+    public MasterMobilModel update(@RequestBody @Valid MasterMobilRequestModel request,
             BindingResult result,
             HttpServletResponse response) throws IOException {
-        TeamModel teamModel = new TeamModel();
+        MasterMobilModel masterMobilModel = new MasterMobilModel();
         if (result.hasErrors()) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), result.getAllErrors().toString());
-            return teamModel;
+            return masterMobilModel;
         } else {
-            BeanUtils.copyProperties(request, teamModel);
-            return teamService.saveOrUpdate(teamModel);
+            BeanUtils.copyProperties(request, masterMobilModel);
+            return masterMobilService.saveOrUpdate(masterMobilModel);
         }
     }
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deleteById/{id}")
-    public TeamModel delete(@PathVariable("id") final String id) {
-        return teamService.deleteById(id);
+    public MasterMobilModel delete(@PathVariable("id") final String id) {
+        return masterMobilService.deleteById(id);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')") 
     @DeleteMapping("/deleteDbById")
     public String deleteDbById(@RequestParam("id") String id){
-        List<Team> listTeam = teamRepository.findAll();
-        for (Team team:listTeam){
-            if (team.getId().equals(id)){
-                teamRepository.delete(team);
-                return "Team berhasil dihapus";
+        List<MasterMobil> listMasterMobil = masterMobilRepo.findAll();
+        for (MasterMobil masterMobil:listMasterMobil){
+            if (masterMobil.getId().equals(id)){
+                masterMobilRepo.delete(masterMobil);
+                return "Mobil berhasil dihapus";
             }
         }
 
-        return "Team tidak ditemukan";
+        return "Mobil tidak ditemukan";
 
     }
 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT', 'ROLE_USER')")
     @GetMapping("/findAll")
-    public List<TeamModel> findAll() {
-        return teamService.findAll();
+    public List<MasterMobilModel> findAll() {
+        return masterMobilService.findAll();
 	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT', 'ROLE_USER')")
     @GetMapping("/findById/{id}")
-    public TeamModel findById(@PathVariable("id") final String id) {
-		return teamService.findById(id);
+    public MasterMobilModel findById(@PathVariable("id") final String id) {
+		return masterMobilService.findById(id);
 	}
 }
-
-
 

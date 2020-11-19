@@ -1,9 +1,9 @@
 package com.master.salmonapp.model;
 
-import java.math.BigDecimal;
-import java.time.Year;
+import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,12 +11,17 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TargetRequestCreateModel {
+public class TeamRequestModel{
 
+  
     @NotBlank
-    private BigDecimal targetT;
-
-    @NotBlank
-    private Year tahun;
+    private String teamName;
     
+    @NotBlank
+    private Date createDate;
+
+    @NotBlank
+    private Integer active;
+
 }
+

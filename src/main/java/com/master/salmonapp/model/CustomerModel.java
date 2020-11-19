@@ -10,14 +10,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserModel extends PersistenceModel {
-    private String username;
-	private String fullName;
-    private String email;
-    private String jk;
-    private String address;
+public class CustomerModel extends PersistenceModel {
+
+    private String nama;
+
     private String phone;
+
+    private String email;
+
+    private String jk;
+
+    private String address;
+
     private Date createDate;
-    private Integer active;
-    
+
+	private Integer active;
+
 }

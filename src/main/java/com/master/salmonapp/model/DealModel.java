@@ -1,5 +1,6 @@
 package com.master.salmonapp.model;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,14 +11,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserModel extends PersistenceModel {
-    private String username;
-	private String fullName;
-    private String email;
-    private String jk;
-    private String address;
-    private String phone;
-    private Date createDate;
-    private Integer active;
+public class DealModel extends PersistenceModel {
     
+    private ProspekModel prospekModel;
+
+    private String keterangan;
+
+    private String stage;
+
+    private BigInteger revenue;
+
+    private Date createDate;
+
+    private Integer active;
 }

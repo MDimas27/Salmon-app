@@ -15,7 +15,7 @@ import lombok.Data;
 public class Role {
 
 	public enum RoleName {
-		ROLE_ADMIN, ROLE_USER, ROLE_CLIENT
+		ROLE_ADMIN, ROLE_USER, ROLE_CLIENT, ROLE_CFO, ROLE_HR, ROLE_SALESLEAD
 	}
 
 	@Id

@@ -1,8 +1,10 @@
 package com.master.salmonapp.model;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.master.salmonapp.entity.TargetSales;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,14 +12,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserModel extends PersistenceModel {
-    private String username;
-	private String fullName;
-    private String email;
-    private String jk;
-    private String address;
-    private String phone;
+public class InsentifModel extends PersistenceModel {
+
+    private TargetSales targetSales;
+
+    private BigInteger revenue;
+
+    private BigInteger targetDetail;
+
+    private BigInteger insentif;
+
     private Date createDate;
+
     private Integer active;
     
 }

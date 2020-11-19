@@ -1,6 +1,7 @@
 package com.master.salmonapp.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -8,7 +9,10 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.master.salmonapp.model.UserModel;
 import com.master.salmonapp.model.UserRequestModel;
+import com.master.salmonapp.repository.UserRepository;
 import com.master.salmonapp.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -38,4 +43,6 @@ public class UserRestController {
 		} else 
 			return userService.register(request);
 	}
+
 }
+

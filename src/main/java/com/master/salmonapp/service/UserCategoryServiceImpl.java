@@ -50,11 +50,11 @@ public class UserCategoryServiceImpl implements UserCategoryService {
 		if (entity.getId() != null) {
 			UserCategory userCategory = userCategoryRepository.findById(entity.getId()).orElse(null);
 			if (userCategory == null)
-				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "User Category with id: " + entity.getId() + " not found");
+				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "User Category with id: " + entity.getId() + " not foud");
 
 			if (userCategory.getUsers() != null && userCategory.getUsers().size() > 0)
-				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "User Category cannot be deleted because already used in Users");
-			
+				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "User Category cannot be deleted because already used in Used");
+
 			userCategory.setStatus(Status.NOT_ACTIVE);
 			userCategory = userCategoryRepository.save(userCategory);
 			BeanUtils.copyProperties(userCategory, entity);
@@ -77,7 +77,7 @@ public class UserCategoryServiceImpl implements UserCategoryService {
 			
 			userCategory.setStatus(Status.NOT_ACTIVE);
 			userCategory = userCategoryRepository.save(userCategory);
-			BeanUtils.copyProperties(userCategory, entity);
+			BeanUtils.copyProperties(userCategoryRepository, entity);
 			return entity;
 		} else
 			throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "Id cannot be null");

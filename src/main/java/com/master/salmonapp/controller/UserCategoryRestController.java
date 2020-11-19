@@ -1,4 +1,4 @@
-package com.master.salmonapp.controller;
+    package com.master.salmonapp.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,22 +17,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.master.salmonapp.entity.UserCategory;
 import com.master.salmonapp.model.UserCategoryModel;
 import com.master.salmonapp.model.UserCategoryRequestCreateModel;
 import com.master.salmonapp.model.UserCategoryRequestUpdateModel;
+import com.master.salmonapp.repository.UserCategoryRepository;
 import com.master.salmonapp.service.UserCategoryService;
 
 import io.swagger.annotations.Api;
 
 @Api
 @RestController
-@RequestMapping("api/rest/user-catergory")
+@RequestMapping("api/rest/user-category")
 public class UserCategoryRestController {
 
     @Autowired
     private UserCategoryService userCategoryService;
+
+    @Autowired
+    private UserCategoryRepository userCategoryRepository;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/save")
@@ -64,10 +70,25 @@ public class UserCategoryRestController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")  
     @DeleteMapping("/deleteById/{id}")
     public UserCategoryModel delete(@PathVariable("id") final String id) {
         return userCategoryService.deleteById(id);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')") 
+    @DeleteMapping("/deleteDbById")
+    public String deleteDbById(@RequestParam("id") String id){
+        List<UserCategory> listUserCategory = userCategoryRepository.findAll();
+        for (UserCategory userCategory:listUserCategory){
+            if (userCategory.getId().equals(id)){
+                userCategoryRepository.delete(userCategory);
+                return "User Category berhasil dihapus";
+            }
+        }
+
+        return "User Category tidak ditemukan";
+
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT', 'ROLE_USER')")

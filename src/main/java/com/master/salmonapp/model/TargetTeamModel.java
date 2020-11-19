@@ -1,7 +1,7 @@
 package com.master.salmonapp.model;
 
-import java.math.BigDecimal;
-import java.time.Year;
+import java.math.BigInteger;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,13 +11,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TargetModel extends PersistenceModel {
+public class TargetTeamModel extends PersistenceModel {
 
     private TeamModel teamModel;
 
-    private Year tahun;
+    private String tahun;
 
-    private BigDecimal targetT;
+    private BigInteger targetTeam;
 
+    private Date createDate;
+
+    private Integer active;
 
 }

@@ -1,7 +1,8 @@
 package com.master.salmonapp.entity;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.Year;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,25 +23,34 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "target")
+@Table(name = "Target_Team")
 @Where(clause = "status = 'ACTIVE'")
-public class Target extends Persistence {
+public class TargetTeam extends Persistence {
     private static final long serialVersionUID = 1130010943968579177L;
+
+    @NotNull
+    @Column(name="year_target", length = 4)
+    private String tahun;
+
+    @NotNull
+    @Column(name = "target")
+    private BigInteger targetTeam;
+
+    @NotNull
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @Column(name = "active", length = 2)
+	private Integer active;
 
     @JoinColumn(name = "team_id")
     @ManyToOne(targetEntity = Team.class, fetch = FetchType.LAZY)
     private Team team;
 
     @Where(clause = "status = 'ACTIVE'")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "target", fetch = FetchType.LAZY)
-    private Set<TargetDetail> targetDetails;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "targetTeam", fetch = FetchType.LAZY)
+    private Set<TargetSales> targetSales;
 
-    @NotNull
-    private Year tahun;
-
-    @NotNull
-    @Column(name = "Target")
-    private BigDecimal targetT;
 
 
     

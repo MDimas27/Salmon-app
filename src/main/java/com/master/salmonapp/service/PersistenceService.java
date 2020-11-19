@@ -10,7 +10,7 @@ public interface PersistenceService<T, ID> {
 
     T deleteById(ID id);
 
-    T findById(ID Id);
+    T findById(ID id);
 
     List<T> findAll();
 
