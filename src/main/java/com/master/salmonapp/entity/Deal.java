@@ -26,6 +26,11 @@ import lombok.Setter;
 @Where(clause = "status = 'ACTIVE'")
 public class Deal extends Persistence {
 
+    public enum TypePayment {
+        CASH, CREDIT
+    }
+    
+
     @JoinColumn(name = "prospek_id")
     @ManyToOne(targetEntity = Prospek.class, fetch = FetchType.LAZY)
     private Prospek prospek;
@@ -38,18 +43,30 @@ public class Deal extends Persistence {
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     private User user;
 
+    @JoinColumn(name = "mobil_id")
+    @ManyToOne(targetEntity = MasterMobil.class, fetch = FetchType.LAZY)
+    private MasterMobil masterMobil;
+
 
     @NotNull
     @Column(length = 255)
     private String keterangan;
 
-    @NotNull
-    @Column(length = 30)
-    private String stage;
+    // @NotNull
+    // @Column(length = 30)
+    // private String stage;
 
     @NotNull
-    @Column(name = "revenue")
-    private BigInteger revenue;
+    @Column(name = "unit")
+    private Integer unit;
+
+    @NotNull
+    @Column(name = "new_price")
+    private BigInteger newPrice;
+
+    @NotNull
+    @Column(name = "deal_date")
+    private Date dealDate;
 
     @NotNull
     @Column(name = "create_date")

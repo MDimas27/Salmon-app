@@ -14,11 +14,20 @@ public class DealRequestModel {
     @NotBlank
     private String keterangan;
 
-    @NotBlank
-    private String stage;
+    // @NotBlank
+    // private String stage;
+
+    // @NotBlank
+    // private BigInteger revenue;
 
     @NotBlank
-    private BigInteger revenue;
+    private Integer unit;
+
+    @NotBlank
+    private BigInteger newPrice;
+
+    @NotBlank
+    private Date dealDate;
 
     @NotBlank
     private Date createDate;

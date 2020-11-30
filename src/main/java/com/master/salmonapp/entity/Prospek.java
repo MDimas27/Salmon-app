@@ -43,17 +43,21 @@ public class Prospek extends Persistence{
     @Column(length = 255)
     private String keterangan;
 
-    @NotNull
-    @Column(length = 30)
-    private String stage;
+    // @NotNull
+    // @Column(length = 30)
+    // private String stage;
+
+    // @NotNull
+    // @Column(name = "closing_status", length = 30)
+    // private String closingStatus;
+
+    // @NotNull
+    // @Column(name = "prospek_revenue")
+    // private BigInteger prospekRevenue;
 
     @NotNull
-    @Column(name = "closing_status", length = 30)
-    private String closingStatus;
-
-    @NotNull
-    @Column(name = "prospek_revenue")
-    private BigInteger prospekRevenue;
+    @Column(name = "prospek_date")
+    private Date prospekDate;
 
     @NotNull
     @Column(name = "create_date")

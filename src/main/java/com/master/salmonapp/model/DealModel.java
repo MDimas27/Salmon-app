@@ -17,9 +17,15 @@ public class DealModel extends PersistenceModel {
 
     private String keterangan;
 
-    private String stage;
+    // private String stage;
 
-    private BigInteger revenue;
+    // private BigInteger revenue;
+
+    private Integer unit;
+
+    private BigInteger newPrice;
+
+    private Date dealDate;
 
     private Date createDate;
 

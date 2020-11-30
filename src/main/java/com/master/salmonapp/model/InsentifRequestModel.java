@@ -9,12 +9,6 @@ public class InsentifRequestModel {
     
     // @NotNull
     // private String id;
-   
-    @NotBlank
-    private BigInteger revenue;
-
-    @NotBlank
-    private BigInteger targetDetail;
 
     @NotBlank
     private BigInteger insentif;

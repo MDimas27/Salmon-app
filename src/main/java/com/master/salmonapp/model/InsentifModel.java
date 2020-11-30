@@ -14,11 +14,11 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InsentifModel extends PersistenceModel {
 
-    private TargetSales targetSales;
+    // private TargetSales targetSales;
 
-    private BigInteger revenue;
+    // private BigInteger revenue;
 
-    private BigInteger targetDetail;
+    // private BigInteger targetDetail;
 
     private BigInteger insentif;
 

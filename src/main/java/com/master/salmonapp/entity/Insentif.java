@@ -22,25 +22,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Insentif")
+@Table(name = "Master_Insentif")
 @Where(clause = "status = 'ACTIVE'")
 public class Insentif extends Persistence{
 
-    @JoinColumn(name = "user_id")
-    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-    private User user;
+    public enum TypePayment {
+        CASH, CREDIT
+    }
 
-    @JoinColumn(name = "target_id")
-    @ManyToOne(targetEntity = TargetSales.class, fetch = FetchType.LAZY)
-    private TargetSales targetSales;
+    @JoinColumn(name = "mobil_id")
+    @ManyToOne(targetEntity = MasterMobil.class, fetch = FetchType.LAZY)
+    private MasterMobil masterMobil;
 
-    @NotNull
-    @Column(name = "revenue")
-    private BigInteger revenue;
+    // @NotNull
+    // @Column(name = "revenue")
+    // private BigInteger revenue;
 
-    @NotNull
-    @Column(name = "target_sales")
-    private BigInteger targetDetail;
+    // @NotNull
+    // @Column(name = "target_sales")
+    // private BigInteger targetDetail;
 
     @NotNull
     @Column(name = "insentif")
@@ -52,7 +52,6 @@ public class Insentif extends Persistence{
 
     @Column(name = "active", length = 2)
 	private Integer active;
-
 
     
 }

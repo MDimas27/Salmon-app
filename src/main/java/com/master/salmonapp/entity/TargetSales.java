@@ -55,12 +55,6 @@ public class TargetSales extends Persistence {
     @Column(name = "active", length = 2)
 	private Integer active;
 
-    @Where(clause = "status = 'ACTIVE'")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "targetSales", fetch = FetchType.LAZY)
-    private Set<Insentif> insentifs;
-
-
-
 }
 
 

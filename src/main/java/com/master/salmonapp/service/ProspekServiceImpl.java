@@ -44,18 +44,14 @@ public class ProspekServiceImpl implements ProspekService {
 				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "Prospek with id : " + entity.getId() + " not found");
 
             prospek.setKeterangan(entity.getKeterangan());
-            prospek.setStage(entity.getStage());
-            prospek.setClosingStatus(entity.getClosingStatus());
-			prospek.setProspekRevenue(entity.getProspekRevenue());
+			prospek.setProspekDate(entity.getProspekDate());
 			prospek.setCreateDate(entity.getCreateDate());
 			prospek.setActive(entity.getActive());
 			prospek = prospekRepository.save(prospek);
 		} else {
 			prospek = new Prospek();
             prospek.setKeterangan(entity.getKeterangan());
-            prospek.setStage(entity.getStage());
-            prospek.setClosingStatus(entity.getClosingStatus());
-			prospek.setProspekRevenue(entity.getProspekRevenue());
+			prospek.setProspekDate(entity.getProspekDate());
 			prospek.setCreateDate(entity.getCreateDate());
 			prospek.setActive(entity.getActive());
 			prospek = prospekRepository.save(prospek);

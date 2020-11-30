@@ -20,14 +20,17 @@ public class ProspekRequestModel {
     @NotBlank
     private String keterangan;
 
-    @NotBlank
-    private String stage;
+    // @NotBlank
+    // private String stage;
+
+    // @NotBlank
+    // private String closingStatus;
+
+    // @NotBlank
+    // private BigInteger prospekRevenue;
 
     @NotBlank
-    private String closingStatus;
-
-    @NotBlank
-    private BigInteger prospekRevenue;
+    private Date prospekDate;
 
     @NotBlank
     private Date createDate;

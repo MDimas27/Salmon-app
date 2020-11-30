@@ -44,16 +44,18 @@ public class DealServiceImpl implements DealService {
 				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "Deal with id : " + entity.getId() + " not found");
 
             deal.setKeterangan(entity.getKeterangan());
-            deal.setStage(entity.getStage());
-			deal.setRevenue(entity.getRevenue());
+			deal.setUnit(entity.getUnit());
+			deal.setNewPrice(entity.getNewPrice());
+			deal.setDealDate(entity.getDealDate());
 			deal.setCreateDate(entity.getCreateDate());
 			deal.setActive(entity.getActive());
 			deal = dealRepository.save(deal);
 		} else {
 			deal = new Deal();
             deal.setKeterangan(entity.getKeterangan());
-            deal.setStage(entity.getStage());
-			deal.setRevenue(entity.getRevenue());
+			deal.setUnit(entity.getUnit());
+			deal.setNewPrice(entity.getNewPrice());
+			deal.setDealDate(entity.getDealDate());
 			deal.setCreateDate(entity.getCreateDate());
 			deal.setActive(entity.getActive());
 			deal = dealRepository.save(deal);

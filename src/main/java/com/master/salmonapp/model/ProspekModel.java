@@ -17,11 +17,13 @@ public class ProspekModel extends PersistenceModel{
 
     private String keterangan;
 
-    private String stage;
+    // private String stage;
 
-    private String closingStatus;
+    // private String closingStatus;
 
-    private BigInteger prospekRevenue;
+    // private BigInteger prospekRevenue;
+
+    private Date prospekDate;
 
     private Date createDate;
 

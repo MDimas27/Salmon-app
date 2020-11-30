@@ -43,16 +43,12 @@ public class InsentifServiceImpl implements InsentifService {
 			if (insentif == null)
 				throw new HttpServerErrorException(HttpStatus.BAD_REQUEST, "Insentif with id : " + entity.getId() + " not found");
 
-            insentif.setRevenue(entity.getRevenue());
-            insentif.setTargetDetail(entity.getTargetDetail());
 			insentif.setInsentif(entity.getInsentif());
 			insentif.setCreateDate(entity.getCreateDate());
 			insentif.setActive(entity.getActive());
 			insentif = insentifRepository.save(insentif);
 		} else {
 			insentif = new Insentif();
-            insentif.setRevenue(entity.getRevenue());
-            insentif.setTargetDetail(entity.getTargetDetail());
 			insentif.setInsentif(entity.getInsentif());
 			insentif.setCreateDate(entity.getCreateDate());
 			insentif.setActive(entity.getActive());
